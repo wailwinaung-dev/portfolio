@@ -110,10 +110,12 @@ type ProjectModalProps = {
   nextImage: () => void;
   prevImage: () => void;
 };
+
 function ProjectModal({
   project,
   openProjectModal,
   currentImageIndex,
+  setCurrentImageIndex,
   nextImage,
   prevImage
 }: ProjectModalProps) {
@@ -130,78 +132,81 @@ function ProjectModal({
             View Details
           </Button>
         </DialogTrigger>
-
         <DialogContent className="!max-w-none !max-h-none !w-screen !h-screen !p-0 !m-0 !rounded-none">
-          <DialogHeader className="p-6 pb-0 relative">
-            <DialogTitle className="font-serif text-2xl pr-8">
+          <DialogHeader className="p-4 sm:p-6 pb-0 relative">
+            <DialogTitle className="font-serif text-xl sm:text-2xl pr-8">
               {project?.title}
             </DialogTitle>
           </DialogHeader>
           {project && (
-            <div className="flex h-[calc(100vh-80px)]">
-              {/* Left side - Image Slideshow (Full Width) */}
-              <div className="flex-1 flex flex-col p-6 pt-0">
+            <div className="flex flex-col lg:flex-row h-[calc(100vh-60px)] sm:h-[calc(100vh-80px)]">
+              {/* Image Slideshow Section */}
+              <div className="flex-1 flex flex-col p-4 sm:p-6 pt-0 min-h-0">
                 {/* Main Image */}
-                <div className="relative flex-1">
+                <div className="relative flex-1 min-h-[300px] sm:min-h-[400px]">
                   <div className="w-full h-full bg-gray-100 rounded-lg overflow-hidden">
                     <img
                       src={
-                        project.images[currentImageIndex] || '/placeholder.svg'
+                        project.images[currentImageIndex] ||
+                        '/placeholder.svg?height=600&width=800&query=project screenshot'
                       }
                       alt={`${project.title} screenshot ${
                         currentImageIndex + 1
                       }`}
-                      // className="w-full h-full object-cover"
+                      className="w-full h-full object-cover"
                     />
                   </div>
 
                   {/* Navigation Buttons */}
                   <button
                     onClick={prevImage}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors"
+                    className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 sm:p-3 rounded-full hover:bg-black/70 transition-colors touch-manipulation"
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
                   <button
                     onClick={nextImage}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors"
+                    className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 sm:p-3 rounded-full hover:bg-black/70 transition-colors touch-manipulation"
                   >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </button>
 
                   {/* Image Counter */}
-                  <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-2 rounded text-sm font-mono">
+                  <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 bg-black/70 text-white px-2 py-1 sm:px-3 sm:py-2 rounded text-xs sm:text-sm font-mono">
                     {currentImageIndex + 1} / {project.images.length}
                   </div>
                 </div>
 
-                {/* Image Thumbnails */}
-                {/* <div className="flex gap-3 mt-4 overflow-x-auto pb-2">
+                {/* Image Thumbnails - Hidden on mobile, shown on larger screens */}
+                <div className="hidden sm:flex gap-3 mt-4 overflow-x-auto pb-2">
                   {project.images.map((image: string, index: number) => (
                     <button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`flex-shrink-0 w-20 h-14 rounded overflow-hidden border-2 transition-all ${
+                      className={`flex-shrink-0 w-16 h-12 sm:w-20 sm:h-14 rounded overflow-hidden border-2 transition-all ${
                         currentImageIndex === index
                           ? 'border-black shadow-lg'
                           : 'border-gray-300 hover:border-gray-400'
                       }`}
                     >
                       <img
-                        src={image || '/placeholder.svg'}
+                        src={
+                          image ||
+                          '/placeholder.svg?height=56&width=80&query=thumbnail'
+                        }
                         alt={`Thumbnail ${index + 1}`}
                         className="w-full h-full object-cover"
                       />
                     </button>
                   ))}
-                </div> */}
+                </div>
               </div>
 
-              {/* Right side - Project Information */}
-              <div className="w-96 border-l-2 border-gray-200 p-6 overflow-y-auto bg-gray-50">
-                <div className="space-y-6">
+              {/* Project Information Section */}
+              <div className="w-full lg:w-96 xl:w-[28rem] border-t-2 lg:border-t-0 lg:border-l-2 border-gray-200 p-4 sm:p-6 overflow-y-auto bg-gray-50 max-h-[50vh] lg:max-h-none">
+                <div className="space-y-4 sm:space-y-6">
                   {/* Project Type and Category */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col sm:flex-row lg:flex-col gap-2">
                     <Badge
                       variant="secondary"
                       className="w-fit font-mono text-xs"
@@ -218,7 +223,7 @@ function ProjectModal({
 
                   {/* Description */}
                   <div>
-                    <h4 className="font-bold font-serif text-lg mb-3 border-b border-gray-300 pb-1">
+                    <h4 className="font-bold font-serif text-base sm:text-lg mb-2 sm:mb-3 border-b border-gray-300 pb-1">
                       Project Overview
                     </h4>
                     <p className="text-sm leading-relaxed text-gray-700">
@@ -228,11 +233,11 @@ function ProjectModal({
 
                   {/* Technologies */}
                   <div>
-                    <h4 className="font-bold font-serif text-lg mb-3 border-b border-gray-300 pb-1">
+                    <h4 className="font-bold font-serif text-base sm:text-lg mb-2 sm:mb-3 border-b border-gray-300 pb-1">
                       Technologies Used
                     </h4>
                     <div className="flex flex-wrap gap-2">
-                      <Badge className="bg-blue-100 text-blue-800 border-blue-300">
+                      <Badge className="bg-blue-100 text-blue-800 border-blue-300 text-xs">
                         {project.teamSize}
                       </Badge>
                       {project.technologies.map((tech: string) => (
@@ -242,55 +247,15 @@ function ProjectModal({
                       ))}
                     </div>
                   </div>
-
-                  {/* Project Stats */}
+                  {/* Team Size */}
                   <div>
-                    <h4 className="font-bold font-serif text-lg mb-3 border-b border-gray-300 pb-1">
-                      Project Details
+                    <h4 className="font-bold font-serif text-base sm:text-lg mb-2 sm:mb-3 border-b border-gray-300 pb-1">
+                      Team Size
                     </h4>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="font-semibold">Status:</span>
-                        <span className="text-green-600">Completed</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold">Duration:</span>
-                        <span>3-6 months</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold">Team Size:</span>
-                        <span>4-8 members</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold">Role:</span>
-                        <span>Lead Developer</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Key Features */}
-                  <div>
-                    <h4 className="font-bold font-serif text-lg mb-3 border-b border-gray-300 pb-1">
-                      Key Features
-                    </h4>
-                    <ul className="text-sm space-y-1 text-gray-700">
-                      <li className="flex items-start gap-2">
-                        <span className="w-1 h-1 bg-black rounded-full mt-2 flex-shrink-0"></span>
-                        <span>Responsive design for all devices</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="w-1 h-1 bg-black rounded-full mt-2 flex-shrink-0"></span>
-                        <span>Real-time data synchronization</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="w-1 h-1 bg-black rounded-full mt-2 flex-shrink-0"></span>
-                        <span>Advanced security implementation</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="w-1 h-1 bg-black rounded-full mt-2 flex-shrink-0"></span>
-                        <span>Scalable architecture</span>
-                      </li>
-                    </ul>
+                    <p className="text-sm leading-relaxed text-gray-700">
+                      {project.teamSize}{' '}
+                      {project.teamSize > 1 ? 'Members' : 'Member'}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -301,3 +266,5 @@ function ProjectModal({
     </div>
   );
 }
+
+export default ProjectModal;
