@@ -114,7 +114,6 @@ function ProjectModal({
   project,
   openProjectModal,
   currentImageIndex,
-  setCurrentImageIndex,
   nextImage,
   prevImage
 }: ProjectModalProps) {
