@@ -29,9 +29,12 @@ export function MainStoryContent() {
             <p className="first-letter:text-6xl first-letter:font-bold first-letter:float-left first-letter:mr-2 first-letter:mt-1">
               Specializing in modern web technologies, this seasoned developer
               has consistently delivered enterprise-grade applications tailored
-              to business-critical needs. With expertise spanning TypeScript,
-              React, Node.js, PHP, and scalable backend systems, they are the
-              go-to professional for solving complex technical challenges.
+              to business-critical needs. With expertise spanning{' '}
+              <b>
+                TypeScript, React, Node.js, PHP, and scalable backend systems
+              </b>
+              , they are the go-to professional for solving complex technical
+              challenges.
             </p>
             <p>
               From building intuitive interfaces to developing scalable backend

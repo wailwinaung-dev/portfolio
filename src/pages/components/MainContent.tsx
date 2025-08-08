@@ -12,13 +12,13 @@ export function MainContent() {
 
       <Separator className="my-8 border-black" />
 
-      {/* Featured Projects Section */}
-      <ProjectContent />
+      {/* Skills & Experience Section */}
+      <SkillExperienceContent />
 
       <Separator className="my-8 border-black" />
 
-      {/* Skills & Experience Section */}
-      <SkillExperienceContent />
+      {/* Featured Projects Section */}
+      <ProjectContent />
 
       {/* Footer */}
       <Footer />
