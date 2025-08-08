@@ -103,6 +103,21 @@ export function SkillExperienceContent() {
             </div>
           </div>
         </div>
+
+        <div className="border-b-2 border-black pb-2 mb-6 mt-12">
+          <h2 className="text-2xl font-bold font-serif">EDUCATION</h2>
+        </div>
+
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-bold font-serif mb-2 text-lg">
+              Computer University, Monywa — B.C.Sc
+            </h3>
+            <p className="text-sm text-gray-600">
+              Bachelor of Computer Science, 2017
+            </p>
+          </div>
+        </div>
       </section>
 
       <section>
