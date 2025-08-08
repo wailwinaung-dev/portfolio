@@ -1,0 +1,16 @@
+export { default as zalaImage } from './zala.png';
+export { default as mickhaeImage } from './mickhae.png';
+export { default as royalImage } from './royalstudio.jpeg';
+export { default as walletImage } from './wallet.png';
+export { default as sumishoImage } from './sumisho.png';
+export { default as subscriberImage } from './subscriber.png';
+export { default as reportTwoImage } from './report-two.png';
+export { default as reportOneImage } from './report-one.png';
+export { default as mmspinImage } from './mmspin.png';
+export { default as merchantImage } from './merchant.png';
+export { default as integrationQueryImage } from './integration-query-account.png';
+export { default as integrationProcessImage } from './integration-process-transaction.png';
+export { default as integrationHeader } from './integration-header.png';
+export { default as exchangePermissionImage } from './exchange-permissions.png';
+export { default as exchangeDenoImage } from './exchange-deno.png';
+export { default as corporateImage } from './corporate.png';
