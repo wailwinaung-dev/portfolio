@@ -30,7 +30,7 @@ export function Footer() {
       <div className="mt-8 pt-4 border-t border-gray-300 text-center text-xs text-gray-500">
         <p>
           © 2024 The Developer Times. All rights reserved. • Designed &
-          Developed by Alex Thompson
+          Developed by Wai Lwin Aung
         </p>
       </div>
     </footer>
