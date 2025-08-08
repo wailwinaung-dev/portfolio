@@ -1,5 +1,6 @@
 import { Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Cv from '../../assets/wailwinaung-cv.pdf';
 
 export function Footer() {
   return (
@@ -12,11 +13,17 @@ export function Footer() {
           Available for full-time positions, consulting, or freelance projects
         </p>
         <div className="flex justify-center gap-4">
-          <Button>
-            <Mail className="w-4 h-4 mr-2" />
-            Get In Touch
+          <Button asChild>
+            <a href="mailto:wailwiniaung228@gmail">
+              <Mail className="w-4 h-4 mr-2" />
+              Get In Touch
+            </a>
           </Button>
-          <Button variant="outline">Download Resume</Button>
+          <Button variant="outline" asChild>
+            <a href={Cv} download={true}>
+              Download Resume
+            </a>
+          </Button>
         </div>
       </div>
 
